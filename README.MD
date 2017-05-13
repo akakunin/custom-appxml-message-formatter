@@ -4,4 +4,8 @@ I've got this solution in another question in Stack Overflow: http://stackoverfl
 
 This fix was tested with WSO2 EI 6.0.0
 
-For installing fix just place it into <wso2ei>dropins and change messageFormatter class in <wso2ie>/conf/axis2/axis2.xml
+For installing fix just place it into _<wso2ei>/dropins_ and change messageFormatter class for application/xml type to com.example.axis2.messageformatter.CustomApplicationXmlFormatter in _<wso2ie>/conf/axis2/axis2.xml_ (to use in send mediator) and in _<wso2ie>/conf/axis2/axis2_blocking_client.xml_ to use in CallOut mediator and in Scheduler Message Forwarding Processor:
+```xml
+<messageFormatter contentType="application/xml"
+                          class="com.example.axis2.messageformatter.CustomApplicationXmlFormatter"/>
+```
